@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'auction_house',
 ]
 
 MIDDLEWARE = [
@@ -118,3 +119,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#Media directory stores the images uploaded by the users
+MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')      #Server path to store files in the computer
+MEDIA_URL = '/media/' 
