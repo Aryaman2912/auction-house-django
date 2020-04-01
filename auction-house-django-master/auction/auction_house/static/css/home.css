@@ -1,0 +1,16 @@
+#all{
+    margin: 20px auto;
+}
+
+.products{
+    background: beige;
+    padding: 10px;
+    width: 100%;
+    border: 3px solid brown;
+    border-radius: 10px;
+    margin:10px auto;
+}
+
+#my{
+    margin:20px auto;
+}
