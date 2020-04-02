@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 
@@ -12,6 +13,10 @@ class Product(models.Model):
     deadline = models.DateField(verbose_name="Deadline")                            #Deadline for auctioning of the product
     contact = models.CharField(max_length=13,verbose_name="Mobile Number")          #Contact of the owner of the product
     image = models.ImageField(upload_to='images/')                                  #Image of the product to be auctioned
+
+    def get_absolute_url(self):
+        """Returns the URL for a detail description for this product. """
+        return reverse('product-detail',args=[str(self.id)])
 
     def __str__(self):
         """
