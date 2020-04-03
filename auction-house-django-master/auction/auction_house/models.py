@@ -23,3 +23,5 @@ class Product(models.Model):
         Method to return the name of the product.
         """
         return self.name
+
+

@@ -1,4 +1,4 @@
-from django.shortcuts import render,HttpResponse
+from django.shortcuts import render,HttpResponse,redirect,get_object_or_404
 from django.views import generic
 from .forms import ProductForm
 from .models import Product
@@ -18,7 +18,17 @@ class ProductDetailView(generic.DetailView):
 
 
 def post_new(request):
-    form = ProductForm()
-    return render(request,'auction_house/post_new.html',{'form':form})
+	product = get_object_or_404(Product,pk=pk)
+	if request.method == "POST":
+		form = ProductForm(request.POST)
+		if form.is_valid():
+			product = form.save(commit=False)
+			product.save()
+		return redirect('post_detail',pk = product.pk)
+		# else:
+		# 	return render(request,"auction_house/home.html")
+	else:
+		form = ProductForm()
+		return render(request,'auction_house/post_new.html',{'form':form})
 
 
